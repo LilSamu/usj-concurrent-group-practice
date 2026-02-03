@@ -101,16 +101,29 @@ cd usj-concurrent-group-practice
    ```
 
 3. Compile the project:
-```bash
-javac -cp ".:jsoup-1.15.3.jar" Main/*.java Concurrency/*.java Fetching/*.java Storing/*.java
-```
+
+   **On Linux/Mac:**
+   ```bash
+   javac -cp ".:jsoup-1.15.3.jar" Main/*.java Concurrency/*.java Fetching/*.java Storing/*.java
+   ```
+   
+   **On Windows:**
+   ```cmd
+   javac -cp ".;jsoup-1.15.3.jar" Main\*.java Concurrency\*.java Fetching\*.java Storing\*.java
+   ```
 
 ## 💻 Usage
 
 ### Running the Crawler
 
+**On Linux/Mac:**
 ```bash
 java -cp ".:jsoup-1.15.3.jar" Main.Main
+```
+
+**On Windows:**
+```cmd
+java -cp ".;jsoup-1.15.3.jar" Main.Main
 ```
 
 ### Configuration
@@ -118,30 +131,31 @@ java -cp ".:jsoup-1.15.3.jar" Main.Main
 You can modify the following parameters in the source code:
 
 #### Start URL
-Edit `ConcurrentStructures.java` (line 24):
+Edit `ConcurrentStructures.java` (in the constructor):
 ```java
 URL start = new URL("https://es.wikipedia.org/wiki/Wikipedia:Portada");
 ```
 
 #### Thread Pool Sizes
-- Fetcher threads: `Fetcher.java` (line 29) - default: 10
-- Writing threads: `Storer.java` (line 28) - default: 30
-- Parsing threads: `Storer.java` (line 29) - default: 10
+Edit the respective class files to change pool sizes:
+- Fetcher threads: `Fetcher.java` (constructor) - default: 10
+- Writing threads: `Storer.java` (constructor) - default: 30
+- Parsing threads: `Storer.java` (constructor) - default: 10
 
 #### Rate Limiting
-Edit `FetcherThread.java` (line 16):
+Edit `FetcherThread.java` (field declaration):
 ```java
 public final long rateLimitMilliseconds = 2000; // 2 seconds
 ```
 
 #### Timeout
-Edit `FetcherThread.java` (line 39):
+Edit `FetcherThread.java` (in the call method):
 ```java
 return Jsoup.connect(url.toString()).timeout(5000).get(); // 5 seconds
 ```
 
 #### Max Retries
-Edit `FetcherThread.java` (line 15):
+Edit `FetcherThread.java` (field declaration):
 ```java
 public final int maxTries = 3;
 ```
