@@ -241,7 +241,7 @@ This project is available under the MIT License. See the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-Group practice project for Universidad San Jorge (USJ) - Concurrent Programming Course
+carbonox, lamari777, Arksuga0202, iPablol, LilSamu
 
 ## 🙏 Acknowledgments
 
